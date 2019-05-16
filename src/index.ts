@@ -2,12 +2,12 @@ import { Deprecation } from "deprecation";
 import once from "once";
 const logOnce = once((deprecation: any) => console.warn(deprecation));
 
-import { RequestOptions, ResponseHeaders, HttpErrorOptions } from "./types";
+import { RequestOptions, ResponseHeaders, RequestErrorOptions } from "./types";
 
 /**
  * Error with extra properties to help with debugging
  */
-export class HttpError extends Error {
+export class RequestError extends Error {
   name: "HttpError";
 
   /**
@@ -32,7 +32,11 @@ export class HttpError extends Error {
    */
   request: RequestOptions;
 
-  constructor(message: string, statusCode: number, options: HttpErrorOptions) {
+  constructor(
+    message: string,
+    statusCode: number,
+    options: RequestErrorOptions
+  ) {
     super(message);
 
     // Maintains proper stack trace (only available on V8)

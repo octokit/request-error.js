@@ -39,7 +39,7 @@ export type RequestOptions = {
   request?: EndpointRequestOptions;
 };
 
-export type HttpErrorOptions = {
+export type RequestErrorOptions = {
   headers: ResponseHeaders;
   request: RequestOptions;
 };
