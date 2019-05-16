@@ -70,12 +70,13 @@ export class RequestError extends Error {
       });
     }
 
-    // client_id & client_secret can be passed as URL query parameters to increase rate limit
-    // see https://developer.github.com/v3/#increasing-the-unauthenticated-rate-limit-for-oauth-applications
-    requestCopy.url = requestCopy.url.replace(
-      /\bclient_secret=\w+/g,
-      "client_secret=[REDACTED]"
-    );
+    requestCopy.url = requestCopy.url
+      // client_id & client_secret can be passed as URL query parameters to increase rate limit
+      // see https://developer.github.com/v3/#increasing-the-unauthenticated-rate-limit-for-oauth-applications
+      .replace(/\bclient_secret=\w+/g, "client_secret=[REDACTED]")
+      // OAuth tokens can be passed as URL query parameters, although it is not recommended
+      // see https://developer.github.com/v3/#oauth2-token-sent-in-a-header
+      .replace(/\baccess_token=\w+/g, "access_token=[REDACTED]");
 
     this.request = requestCopy;
   }
