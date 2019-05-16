@@ -1,0 +1,84 @@
+{
+  "name": "@octokit/request-error",
+  "version": "0.0.0-development",
+  "publishConfig": {
+    "access": "public"
+  },
+  "description": "Error class for Octokit request errors",
+  "scripts": {
+    "build": "pack build",
+    "lint": "prettier --check '{src,test}/**/*' README.md package.json",
+    "lint:fix": "prettier --write '{src,test}/**/*' README.md package.json",
+    "pretest": "npm run -s lint",
+    "test": "jest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/octokit/request-error.js.git"
+  },
+  "keywords": [
+    "octokit",
+    "github",
+    "api",
+    "error"
+  ],
+  "author": "Gregor Martynus (https://github.com/gr2m)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/octokit/request-error.js/issues"
+  },
+  "homepage": "https://github.com/octokit/request-error.js#readme",
+  "dependencies": {
+    "deprecation": "^2.0.0",
+    "once": "^1.4.0"
+  },
+  "devDependencies": {
+    "@gr2m/pika-plugin-bundle-web": "^0.3.16-patch-issue-46-6",
+    "@pika/pack": "^0.3.7",
+    "@pika/plugin-build-node": "^0.3.16",
+    "@pika/plugin-build-web": "^0.3.16",
+    "@pika/plugin-ts-standard-pkg": "^0.3.16",
+    "@types/jest": "^24.0.12",
+    "@types/node": "^11.13.8",
+    "@types/once": "^1.4.0",
+    "jest": "^24.7.1",
+    "pika-plugin-unpkg-field": "^1.1.0",
+    "prettier": "^1.17.0",
+    "semantic-release": "^15.10.5",
+    "ts-jest": "^24.0.2",
+    "typescript": "^3.4.5"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "coverageThreshold": {
+      "global": {
+        "statements": 100,
+        "branches": 100,
+        "functions": 100,
+        "lines": 100
+      }
+    }
+  },
+  "@pika/pack": {
+    "pipeline": [
+      [
+        "@pika/plugin-ts-standard-pkg"
+      ],
+      [
+        "@pika/plugin-build-node"
+      ],
+      [
+        "@pika/plugin-build-web"
+      ],
+      [
+        "@gr2m/pika-plugin-bundle-web",
+        {
+          "browser": true
+        }
+      ],
+      [
+        "pika-plugin-unpkg-field"
+      ]
+    ]
+  }
+}
