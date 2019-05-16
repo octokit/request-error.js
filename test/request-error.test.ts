@@ -68,6 +68,54 @@ describe("RequestError", () => {
     });
   });
 
+  it("redacts credentials from error.request.url", () => {
+    const options = Object.assign({}, mockOptions, {
+      request: {
+        method: "GET",
+        url: "https://api.github.com/?client_id=123&client_secret=secret123",
+        headers: {}
+      }
+    });
+
+    const error = new RequestError("test", 123, options);
+
+    expect(error.request.url).toEqual(
+      "https://api.github.com/?client_id=123&client_secret=[REDACTED]"
+    );
+  });
+
+  it("redacts client_secret from error.request.url", () => {
+    const options = Object.assign({}, mockOptions, {
+      request: {
+        method: "GET",
+        url: "https://api.github.com/?client_id=123&client_secret=secret123",
+        headers: {}
+      }
+    });
+
+    const error = new RequestError("test", 123, options);
+
+    expect(error.request.url).toEqual(
+      "https://api.github.com/?client_id=123&client_secret=[REDACTED]"
+    );
+  });
+
+  it("redacts access_token from error.request.url", () => {
+    const options = Object.assign({}, mockOptions, {
+      request: {
+        method: "GET",
+        url: "https://api.github.com/?access_token=secret123",
+        headers: {}
+      }
+    });
+
+    const error = new RequestError("test", 123, options);
+
+    expect(error.request.url).toEqual(
+      "https://api.github.com/?access_token=[REDACTED]"
+    );
+  });
+
   it("deprecates .code", () => {
     global.console.warn = jest.fn();
     expect(new RequestError("test", 123, mockOptions).code).toEqual(123);
