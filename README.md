@@ -17,7 +17,7 @@ Load <code>@octokit/request-error</code> directly from <a href="https://unpkg.co
         
 ```html
 <script type="module">
-import { request } from "https://unpkg.com/@octokit/request-error";
+import { RequestError } from "https://cdn.pika.dev/@octokit/request-error";
 </script>
 ```
 
@@ -29,8 +29,8 @@ Node
 Install with <code>npm install @octokit/request-error</code>
 
 ```js
-const { request } = require("@octokit/request-error");
-// or: import { request } from "@octokit/request-error";
+const { RequestError } = require("@octokit/request-error");
+// or: import { RequestError } from "@octokit/request-error";
 ```
 
 </td></tr>
