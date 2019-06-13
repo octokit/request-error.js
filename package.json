@@ -69,16 +69,18 @@
       ],
       [
         "@pika/plugin-build-web"
-      ],
-      [
-        "@pika/plugin-bundle-web",
-        {
-          "browser": true
-        }
-      ],
-      [
-        "pika-plugin-unpkg-field"
       ]
     ]
-  }
+  },
+  "plugins": [
+    "@semantic-release/commit-analyzer",
+    "@semantic-release/release-notes-generator",
+    [
+      "@semantic-release/npm",
+      {
+        "pkgRoot": "./pkg"
+      }
+    ],
+    "@semantic-release/git"
+  ]
 }
