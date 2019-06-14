@@ -13,7 +13,7 @@
 <tr><th>
 Browsers
 </th><td width=100%>
-Load <code>@octokit/request-error</code> directly from <a href="https://unpkg.com">unpkg.com</a>
+Load <code>@octokit/request-error</code> directly from <a href="https://cdn.pika.dev">cdn.pika.dev</a>
         
 ```html
 <script type="module">
