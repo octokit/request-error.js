@@ -2,7 +2,8 @@ import { Deprecation } from "deprecation";
 import once from "once";
 const logOnce = once((deprecation: any) => console.warn(deprecation));
 
-import { RequestOptions, ResponseHeaders, RequestErrorOptions } from "./types";
+import { RequestOptions, ResponseHeaders } from "@octokit/types";
+import { RequestErrorOptions } from "./types";
 
 /**
  * Error with extra properties to help with debugging
