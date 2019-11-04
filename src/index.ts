@@ -58,7 +58,7 @@ export class RequestError extends Error {
         return statusCode;
       }
     });
-    this.headers = options.headers;
+    this.headers = options.headers || {};
 
     // redact request credentials without mutating original request options
     const requestCopy = Object.assign({}, options.request);

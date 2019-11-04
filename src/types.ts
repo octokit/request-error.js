@@ -1,6 +1,6 @@
 import { RequestOptions, ResponseHeaders } from "@octokit/types";
 
 export type RequestErrorOptions = {
-  headers: ResponseHeaders;
+  headers?: ResponseHeaders;
   request: RequestOptions;
 };
