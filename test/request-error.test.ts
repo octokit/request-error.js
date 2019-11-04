@@ -2,7 +2,6 @@ import { RequestError } from "../src";
 import { RequestErrorOptions } from "../src/types";
 
 const mockOptions: RequestErrorOptions = {
-  headers: {},
   request: {
     method: "GET",
     url: "https://api.github.com/",
