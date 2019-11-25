@@ -38,7 +38,7 @@
     "@pika/plugin-build-node": "^0.8.1",
     "@pika/plugin-build-web": "^0.8.1",
     "@pika/plugin-bundle-web": "^0.8.1",
-    "@pika/plugin-ts-standard-pkg": "^0.7.0",
+    "@pika/plugin-ts-standard-pkg": "^0.8.1",
     "@types/jest": "^24.0.12",
     "@types/node": "^13.1.0",
     "@types/once": "^1.4.0",
