@@ -42,7 +42,7 @@
     "@types/jest": "^25.1.0",
     "@types/node": "^13.1.0",
     "@types/once": "^1.4.0",
-    "jest": "^24.7.1",
+    "jest": "^25.1.0",
     "pika-plugin-unpkg-field": "^1.1.0",
     "prettier": "^1.17.0",
     "semantic-release": "^17.0.0",
