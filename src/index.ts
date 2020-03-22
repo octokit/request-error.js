@@ -56,7 +56,7 @@ export class RequestError extends Error {
           )
         );
         return statusCode;
-      }
+      },
     });
     this.headers = options.headers || {};
 
@@ -67,7 +67,7 @@ export class RequestError extends Error {
         authorization: options.request.headers.authorization.replace(
           / .*$/,
           " [REDACTED]"
-        )
+        ),
       });
     }
 
