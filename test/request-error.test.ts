@@ -5,8 +5,8 @@ const mockOptions: RequestErrorOptions = {
   request: {
     method: "GET",
     url: "https://api.github.com/",
-    headers: {}
-  }
+    headers: {},
+  },
 };
 
 describe("RequestError", () => {
@@ -33,11 +33,11 @@ describe("RequestError", () => {
   it("sets .headers", () => {
     const options = Object.assign({}, mockOptions, {
       headers: {
-        foo: "bar"
-      }
+        foo: "bar",
+      },
     });
     expect(new RequestError("test", 123, options).headers).toEqual({
-      foo: "bar"
+      foo: "bar",
     });
   });
 
@@ -47,23 +47,23 @@ describe("RequestError", () => {
         method: "POST",
         url: "https://api.github.com/authorizations",
         body: {
-          note: "test"
+          note: "test",
         },
         headers: {
-          authorization: "token secret123"
-        }
-      }
+          authorization: "token secret123",
+        },
+      },
     });
 
     expect(new RequestError("test", 123, options).request).toEqual({
       method: "POST",
       url: "https://api.github.com/authorizations",
       body: {
-        note: "test"
+        note: "test",
       },
       headers: {
-        authorization: "token [REDACTED]"
-      }
+        authorization: "token [REDACTED]",
+      },
     });
   });
 
@@ -72,8 +72,8 @@ describe("RequestError", () => {
       request: {
         method: "GET",
         url: "https://api.github.com/?client_id=123&client_secret=secret123",
-        headers: {}
-      }
+        headers: {},
+      },
     });
 
     const error = new RequestError("test", 123, options);
@@ -88,8 +88,8 @@ describe("RequestError", () => {
       request: {
         method: "GET",
         url: "https://api.github.com/?client_id=123&client_secret=secret123",
-        headers: {}
-      }
+        headers: {},
+      },
     });
 
     const error = new RequestError("test", 123, options);
@@ -104,8 +104,8 @@ describe("RequestError", () => {
       request: {
         method: "GET",
         url: "https://api.github.com/?access_token=secret123",
-        headers: {}
-      }
+        headers: {},
+      },
     });
 
     const error = new RequestError("test", 123, options);
