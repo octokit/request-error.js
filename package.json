@@ -85,5 +85,10 @@
       ],
       "@semantic-release/github"
     ]
+  },
+  "renovate": {
+    "extends": [
+      "github>octokit/.github"
+    ]
   }
 }
