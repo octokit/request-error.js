@@ -12,10 +12,7 @@
     "pretest": "npm run -s lint",
     "test": "jest --coverage"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/octokit/request-error.js.git"
-  },
+  "repository": "github:octokit/request-error.js",
   "keywords": [
     "octokit",
     "github",
@@ -24,10 +21,6 @@
   ],
   "author": "Gregor Martynus (https://github.com/gr2m)",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/octokit/request-error.js/issues"
-  },
-  "homepage": "https://github.com/octokit/request-error.js#readme",
   "dependencies": {
     "@octokit/types": "^6.0.3",
     "deprecation": "^2.0.0",
