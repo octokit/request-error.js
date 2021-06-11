@@ -1,6 +1,16 @@
-import { RequestOptions, ResponseHeaders } from "@octokit/types";
+import {
+  RequestOptions,
+  ResponseHeaders,
+  OctokitResponse,
+} from "@octokit/types";
 
-export type RequestErrorOptions = {
-  headers?: ResponseHeaders;
-  request: RequestOptions;
-};
+export type RequestErrorOptions =
+  | {
+      /** @deprecated set `response` instead */
+      headers?: ResponseHeaders;
+      request: RequestOptions;
+    }
+  | {
+      response: OctokitResponse<unknown>;
+      request: RequestOptions;
+    };
