@@ -10,27 +10,27 @@ const mockOptions: RequestErrorOptions = {
 };
 
 describe("RequestError", () => {
-  it("inherits from Error", () => {
+  test("inherits from Error", () => {
     const error = new RequestError("test", 123, mockOptions);
     expect(error).toBeInstanceOf(Error);
   });
 
-  it("sets .name to 'RequestError'", () => {
+  test("sets .name to 'RequestError'", () => {
     const error = new RequestError("test", 123, mockOptions);
     expect(error.name).toBe("HttpError");
   });
 
-  it("sets .message", () => {
+  test("sets .message", () => {
     expect(new RequestError("test", 123, mockOptions).message).toEqual("test");
     expect(new RequestError("foo", 123, mockOptions).message).toEqual("foo");
   });
 
-  it("sets .status", () => {
+  test("sets .status", () => {
     expect(new RequestError("test", 123, mockOptions).status).toEqual(123);
     expect(new RequestError("test", 404, mockOptions).status).toEqual(404);
   });
 
-  it("sets .headers", () => {
+  test("sets .headers", () => {
     const options = Object.assign({}, mockOptions, {
       headers: {
         foo: "bar",
@@ -41,7 +41,7 @@ describe("RequestError", () => {
     });
   });
 
-  it("sets .request", () => {
+  test("sets .request", () => {
     const options = Object.assign({}, mockOptions, {
       request: {
         method: "POST",
@@ -67,7 +67,7 @@ describe("RequestError", () => {
     });
   });
 
-  it("redacts credentials from error.request.url", () => {
+  test("redacts credentials from error.request.url", () => {
     const options = Object.assign({}, mockOptions, {
       request: {
         method: "GET",
@@ -83,7 +83,7 @@ describe("RequestError", () => {
     );
   });
 
-  it("redacts client_secret from error.request.url", () => {
+  test("redacts client_secret from error.request.url", () => {
     const options = Object.assign({}, mockOptions, {
       request: {
         method: "GET",
@@ -99,7 +99,7 @@ describe("RequestError", () => {
     );
   });
 
-  it("redacts access_token from error.request.url", () => {
+  test("redacts access_token from error.request.url", () => {
     const options = Object.assign({}, mockOptions, {
       request: {
         method: "GET",
@@ -115,7 +115,7 @@ describe("RequestError", () => {
     );
   });
 
-  it("deprecates .code", () => {
+  test("deprecates .code", () => {
     global.console.warn = jest.fn();
     expect(new RequestError("test", 123, mockOptions).code).toEqual(123);
     expect(new RequestError("test", 404, mockOptions).code).toEqual(404);
