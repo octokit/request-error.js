@@ -30,17 +30,6 @@ describe("RequestError", () => {
     expect(new RequestError("test", 404, mockOptions).status).toEqual(404);
   });
 
-  test("sets .headers", () => {
-    const options = Object.assign({}, mockOptions, {
-      headers: {
-        foo: "bar",
-      },
-    });
-    expect(new RequestError("test", 123, options).headers).toEqual({
-      foo: "bar",
-    });
-  });
-
   test("sets .request", () => {
     const options = Object.assign({}, mockOptions, {
       request: {
@@ -115,10 +104,53 @@ describe("RequestError", () => {
     );
   });
 
+  test("error.response", () => {
+    const error = new RequestError("test", 123, {
+      request: mockOptions.request,
+      response: {
+        url: mockOptions.request.url,
+        status: 404,
+        data: {
+          error: "Not Found",
+        },
+        headers: {
+          "x-github-request-id": "1",
+        },
+      },
+    });
+
+    expect(error.response).toStrictEqual({
+      data: {
+        error: "Not Found",
+      },
+      headers: {
+        "x-github-request-id": "1",
+      },
+      status: 404,
+      url: "https://api.github.com/",
+    });
+  });
+
   test("deprecates .code", () => {
     global.console.warn = jest.fn();
     expect(new RequestError("test", 123, mockOptions).code).toEqual(123);
     expect(new RequestError("test", 404, mockOptions).code).toEqual(404);
+    expect(console.warn).toHaveBeenCalledTimes(1);
+  });
+
+  test("deprecates .headers", () => {
+    global.console.warn = jest.fn();
+    expect(new RequestError("test", 123, mockOptions).headers).toStrictEqual(
+      {}
+    );
+    expect(
+      new RequestError("test", 404, { ...mockOptions, headers: { foo: "bar" } })
+        .headers
+    ).toStrictEqual({ foo: "bar" });
+    expect(
+      new RequestError("test", 404, { ...mockOptions, headers: undefined })
+        .headers
+    ).toStrictEqual({});
     expect(console.warn).toHaveBeenCalledTimes(1);
   });
 });
