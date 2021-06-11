@@ -24,8 +24,6 @@
   "dependencies": {
     "@octokit/types": "^6.0.3",
     "deprecation": "^2.0.0",
-    "i": "^0.3.6",
-    "npm": "^7.14.0",
     "once": "^1.4.0"
   },
   "devDependencies": {
