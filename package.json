@@ -6,7 +6,7 @@
   },
   "description": "Error class for Octokit request errors",
   "scripts": {
-    "build": "pika build",
+    "build": "pika-pack build",
     "lint": "prettier --check '{src,test}/**/*' README.md package.json",
     "lint:fix": "prettier --write '{src,test}/**/*' README.md package.json",
     "pretest": "npm run -s lint",
