@@ -1,14 +1,19 @@
 import { Deprecation } from "deprecation";
 import once from "once";
-const logOnceCode = once((deprecation: any) => console.warn(deprecation));
-const logOnceHeaders = once((deprecation: any) => console.warn(deprecation));
-
 import {
   RequestOptions,
   ResponseHeaders,
   OctokitResponse,
 } from "@octokit/types";
 import { RequestErrorOptions } from "./types";
+
+const log = (deprecation: any) => {
+  if (process.env.NODE_ENV !== "production") {
+    console.warn(deprecation);
+  }
+};
+const logOnceCode = once(log);
+const logOnceHeaders = once(log);
 
 /**
  * Error with extra properties to help with debugging
