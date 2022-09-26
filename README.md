@@ -55,8 +55,8 @@ const error = new RequestError("Oops", 500, {
       "x-github-request-id": "1:2:3:4",
     },
     data: {
-      foo: "bar"
-    }
+      foo: "bar",
+    },
   },
 });
 
