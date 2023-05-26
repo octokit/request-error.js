@@ -66,7 +66,7 @@ error.request; // { method, url, headers, body }
 error.response; // { url, status, headers, data }
 ```
 
-### Handling
+### Usage with Octokit
 
 ```js
 try {
