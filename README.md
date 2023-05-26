@@ -66,6 +66,24 @@ error.request; // { method, url, headers, body }
 error.response; // { url, status, headers, data }
 ```
 
+### Handling
+
+```js
+try {
+  // your code here that sends at least one Octokit request
+  await octokit.request("GET /");
+} catch (error) {
+  // Octokit errors always have a `error.status` property which is the http response code
+  if (error.status) {
+    // handle Octokit error
+    // see https://github.com/octokit/request-error.js
+  } else {
+    // handle all other errors
+    throw error;
+  }
+}
+```
+
 ## LICENSE
 
 [MIT](LICENSE)
