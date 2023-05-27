@@ -66,7 +66,7 @@ error.request; // { method, url, headers, body }
 error.response; // { url, status, headers, data }
 ```
 
-### Handling
+### Usage with Octokit
 
 ```js
 try {
@@ -76,7 +76,6 @@ try {
   // Octokit errors always have a `error.status` property which is the http response code
   if (error.status) {
     // handle Octokit error
-    // see https://github.com/octokit/request-error.js
   } else {
     // handle all other errors
     throw error;
