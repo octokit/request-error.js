@@ -47,22 +47,6 @@
       }
     }
   },
-  "@pika/pack": {
-    "pipeline": [
-      [
-        "@pika/plugin-ts-standard-pkg"
-      ],
-      [
-        "@pika/plugin-build-node",
-        {
-          "minNodeVersion": 18
-        }
-      ],
-      [
-        "@pika/plugin-build-web"
-      ]
-    ]
-  },
   "release": {
     "branches": [
       "+([0-9]).x",
