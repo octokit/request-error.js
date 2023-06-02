@@ -6,7 +6,7 @@
   },
   "description": "Error class for Octokit request errors",
   "scripts": {
-    "build": "pika-pack build",
+    "build": "node scripts/build.mjs && tsc -p tsconfig.json",
     "lint": "prettier --check '{src,test}/**/*' README.md package.json",
     "lint:fix": "prettier --write '{src,test}/**/*' README.md package.json",
     "pretest": "npm run -s lint",
@@ -31,6 +31,8 @@
     "@types/jest": "^29.0.0",
     "@types/node": "^18.0.0",
     "@types/once": "^1.4.0",
+    "esbuild": "^0.17.19",
+    "glob": "^10.2.6",
     "jest": "^29.0.0",
     "prettier": "2.8.8",
     "ts-jest": "^29.0.0",
