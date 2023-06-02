@@ -3,12 +3,12 @@ import once from "once";
 const logOnceCode = once((deprecation: any) => console.warn(deprecation));
 const logOnceHeaders = once((deprecation: any) => console.warn(deprecation));
 
-import {
+import type {
   RequestOptions,
   ResponseHeaders,
   OctokitResponse,
 } from "@octokit/types";
-import { RequestErrorOptions } from "./types";
+import type { RequestErrorOptions } from "./types";
 
 /**
  * Error with extra properties to help with debugging
