@@ -1,4 +1,4 @@
-const { RequestError } = require("../src");
+import { RequestError } from "../src";
 import type { RequestErrorOptions } from "../src/types";
 
 const mockOptions: RequestErrorOptions = {
