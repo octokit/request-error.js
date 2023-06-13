@@ -1,5 +1,5 @@
-import { Deprecation } from "deprecation";
-import once from "once";
+const { Deprecation } = require("deprecation");
+const once = require("once");
 const logOnceCode = once((deprecation: any) => console.warn(deprecation));
 const logOnceHeaders = once((deprecation: any) => console.warn(deprecation));
 
@@ -13,7 +13,7 @@ import type { RequestErrorOptions } from "./types";
 /**
  * Error with extra properties to help with debugging
  */
-export class RequestError extends Error {
+class RequestError extends Error {
   name: "HttpError";
 
   /**
@@ -115,3 +115,5 @@ export class RequestError extends Error {
     });
   }
 }
+
+module.exports.RequestError = RequestError;
