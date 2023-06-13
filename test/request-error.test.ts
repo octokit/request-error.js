@@ -1,5 +1,5 @@
 import { RequestError } from "../src";
-import { RequestErrorOptions } from "../src/types";
+import type { RequestErrorOptions } from "../src/types";
 
 const mockOptions: RequestErrorOptions = {
   request: {
