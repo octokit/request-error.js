@@ -12,11 +12,11 @@
 <tr><th>
 Browsers
 </th><td width=100%>
-Load <code>@octokit/request-error</code> directly from <a href="https://cdn.skypack.dev">cdn.skypack.dev</a>
+Load <code>@octokit/request-error</code> directly from <a href="https://esm.sh">esm.sh</a>
         
 ```html
 <script type="module">
-import { RequestError } from "https://cdn.skypack.dev/@octokit/request-error";
+import { RequestError } from "https://esm.sh/@octokit/request-error";
 </script>
 ```
 
