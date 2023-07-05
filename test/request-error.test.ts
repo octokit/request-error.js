@@ -68,7 +68,7 @@ describe("RequestError", () => {
     const error = new RequestError("test", 123, options);
 
     expect(error.request.url).toEqual(
-      "https://api.github.com/?client_id=123&client_secret=[REDACTED]"
+      "https://api.github.com/?client_id=123&client_secret=[REDACTED]",
     );
   });
 
@@ -84,7 +84,7 @@ describe("RequestError", () => {
     const error = new RequestError("test", 123, options);
 
     expect(error.request.url).toEqual(
-      "https://api.github.com/?client_id=123&client_secret=[REDACTED]"
+      "https://api.github.com/?client_id=123&client_secret=[REDACTED]",
     );
   });
 
@@ -100,7 +100,7 @@ describe("RequestError", () => {
     const error = new RequestError("test", 123, options);
 
     expect(error.request.url).toEqual(
-      "https://api.github.com/?access_token=[REDACTED]"
+      "https://api.github.com/?access_token=[REDACTED]",
     );
   });
 
@@ -141,15 +141,15 @@ describe("RequestError", () => {
   test("deprecates .headers", () => {
     global.console.warn = jest.fn();
     expect(new RequestError("test", 123, mockOptions).headers).toStrictEqual(
-      {}
+      {},
     );
     expect(
       new RequestError("test", 404, { ...mockOptions, headers: { foo: "bar" } })
-        .headers
+        .headers,
     ).toStrictEqual({ foo: "bar" });
     expect(
       new RequestError("test", 404, { ...mockOptions, headers: undefined })
-        .headers
+        .headers,
     ).toStrictEqual({});
     expect(console.warn).toHaveBeenCalledTimes(1);
   });
