@@ -48,7 +48,7 @@ export class RequestError extends Error {
   constructor(
     message: string,
     statusCode: number,
-    options: RequestErrorOptions
+    options: RequestErrorOptions,
   ) {
     super(message);
 
@@ -77,7 +77,7 @@ export class RequestError extends Error {
       requestCopy.headers = Object.assign({}, options.request.headers, {
         authorization: options.request.headers.authorization.replace(
           / .*$/,
-          " [REDACTED]"
+          " [REDACTED]",
         ),
       });
     }
@@ -97,8 +97,8 @@ export class RequestError extends Error {
       get() {
         logOnceCode(
           new Deprecation(
-            "[@octokit/request-error] `error.code` is deprecated, use `error.status`."
-          )
+            "[@octokit/request-error] `error.code` is deprecated, use `error.status`.",
+          ),
         );
         return statusCode;
       },
@@ -107,8 +107,8 @@ export class RequestError extends Error {
       get() {
         logOnceHeaders(
           new Deprecation(
-            "[@octokit/request-error] `error.headers` is deprecated, use `error.response.headers`."
-          )
+            "[@octokit/request-error] `error.headers` is deprecated, use `error.response.headers`.",
+          ),
         );
         return headers || {};
       },
