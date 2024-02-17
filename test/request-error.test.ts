@@ -7,6 +7,12 @@ const mockOptions: RequestErrorOptions = {
     url: "https://api.github.com/",
     headers: {},
   },
+  response: {
+    headers: {},
+    status: 200,
+    url: "https://api.github.com/",
+    data: {},
+  },
 };
 
 describe("RequestError", () => {
