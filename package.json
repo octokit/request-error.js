@@ -4,6 +4,7 @@
   "publishConfig": {
     "access": "public"
   },
+  "type": "module",
   "description": "Error class for Octokit request errors",
   "scripts": {
     "build": "node scripts/build.mjs && tsc -p tsconfig.json",
@@ -27,7 +28,7 @@
     "once": "^1.4.0"
   },
   "devDependencies": {
-    "@octokit/tsconfig": "^2.0.0",
+    "@octokit/tsconfig": "^3.0.0",
     "@types/jest": "^29.0.0",
     "@types/node": "^20.0.0",
     "@types/once": "^1.4.0",
