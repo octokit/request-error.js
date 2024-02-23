@@ -1,14 +1,5 @@
-import { Deprecation } from "deprecation";
-import once from "once";
-const logOnceCode = once((deprecation: any) => console.warn(deprecation));
-const logOnceHeaders = once((deprecation: any) => console.warn(deprecation));
-
-import type {
-  RequestOptions,
-  ResponseHeaders,
-  OctokitResponse,
-} from "@octokit/types";
-import type { RequestErrorOptions } from "./types";
+import type { RequestOptions, OctokitResponse } from "@octokit/types";
+import type { RequestErrorOptions } from "./types.js";
 
 /**
  * Error with extra properties to help with debugging
@@ -22,23 +13,9 @@ export class RequestError extends Error {
   status: number;
 
   /**
-   * http status code
-   *
-   * @deprecated `error.code` is deprecated in favor of `error.status`
-   */
-  code!: number;
-
-  /**
    * Request options that lead to the error.
    */
   request: RequestOptions;
-
-  /**
-   * error response headers
-   *
-   * @deprecated `error.headers` is deprecated in favor of `error.response.headers`
-   */
-  headers!: ResponseHeaders;
 
   /**
    * Response object if a response was received
@@ -60,15 +37,9 @@ export class RequestError extends Error {
 
     this.name = "HttpError";
     this.status = statusCode;
-    let headers: ResponseHeaders;
-
-    if ("headers" in options && typeof options.headers !== "undefined") {
-      headers = options.headers;
-    }
 
     if ("response" in options) {
       this.response = options.response;
-      headers = options.response.headers;
     }
 
     // redact request credentials without mutating original request options
@@ -91,27 +62,5 @@ export class RequestError extends Error {
       .replace(/\baccess_token=\w+/g, "access_token=[REDACTED]");
 
     this.request = requestCopy;
-
-    // deprecations
-    Object.defineProperty(this, "code", {
-      get() {
-        logOnceCode(
-          new Deprecation(
-            "[@octokit/request-error] `error.code` is deprecated, use `error.status`.",
-          ),
-        );
-        return statusCode;
-      },
-    });
-    Object.defineProperty(this, "headers", {
-      get() {
-        logOnceHeaders(
-          new Deprecation(
-            "[@octokit/request-error] `error.headers` is deprecated, use `error.response.headers`.",
-          ),
-        );
-        return headers || {};
-      },
-    });
   }
 }

@@ -1,11 +1,17 @@
-import { RequestError } from "../src";
-import type { RequestErrorOptions } from "../src/types";
+import { RequestError } from "../src/index.js";
+import type { RequestErrorOptions } from "../src/types.js";
 
 const mockOptions: RequestErrorOptions = {
   request: {
     method: "GET",
     url: "https://api.github.com/",
     headers: {},
+  },
+  response: {
+    headers: {},
+    status: 200,
+    url: "https://api.github.com/",
+    data: {},
   },
 };
 
@@ -129,28 +135,5 @@ describe("RequestError", () => {
       status: 404,
       url: "https://api.github.com/",
     });
-  });
-
-  test("deprecates .code", () => {
-    global.console.warn = jest.fn();
-    expect(new RequestError("test", 123, mockOptions).code).toEqual(123);
-    expect(new RequestError("test", 404, mockOptions).code).toEqual(404);
-    expect(console.warn).toHaveBeenCalledTimes(1);
-  });
-
-  test("deprecates .headers", () => {
-    global.console.warn = jest.fn();
-    expect(new RequestError("test", 123, mockOptions).headers).toStrictEqual(
-      {},
-    );
-    expect(
-      new RequestError("test", 404, { ...mockOptions, headers: { foo: "bar" } })
-        .headers,
-    ).toStrictEqual({ foo: "bar" });
-    expect(
-      new RequestError("test", 404, { ...mockOptions, headers: undefined })
-        .headers,
-    ).toStrictEqual({});
-    expect(console.warn).toHaveBeenCalledTimes(1);
   });
 });
