@@ -28,8 +28,7 @@ Node
 Install with <code>npm install @octokit/request-error</code>
 
 ```js
-const { RequestError } = require("@octokit/request-error");
-// or: import { RequestError } from "@octokit/request-error";
+import { RequestError } from "@octokit/request-error";
 ```
 
 </td></tr>
