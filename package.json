@@ -2,7 +2,8 @@
   "name": "@octokit/request-error",
   "version": "0.0.0-development",
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "provenance": true
   },
   "description": "Error class for Octokit request errors",
   "scripts": {
