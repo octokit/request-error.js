@@ -35,7 +35,7 @@ import { RequestError } from "@octokit/request-error";
 </tbody>
 </table>
 
-> [!NOTE]
+> [!IMPORTANT]
 > As we use [conditional exports](https://nodejs.org/api/packages.html#conditional-exports), you will need to adapt your `tsconfig.json`. See the TypeScript docs on [package.json "exports"](https://www.typescriptlang.org/docs/handbook/modules/reference.html#packagejson-exports).
 
 ```js
