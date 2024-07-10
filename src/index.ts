@@ -42,7 +42,7 @@ export class RequestError extends Error {
 
     // If status is not equal to itself, then it is NaN
     // we set then the status to 0
-    if (this.status !== this.status) {
+    if (Number.isNaN(this.status)) {
       this.status = 0;
     }
 
