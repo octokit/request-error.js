@@ -34,6 +34,13 @@ describe("RequestError", () => {
   test("sets .status", () => {
     expect(new RequestError("test", 123, mockOptions).status).toEqual(123);
     expect(new RequestError("test", 404, mockOptions).status).toEqual(404);
+    // @ts-expect-error
+    expect(new RequestError("test", "404", mockOptions).status).toEqual(404);
+    expect(new RequestError("test", NaN, mockOptions).status).toEqual(0);
+    // @ts-expect-error
+    expect(new RequestError("test", [], mockOptions).status).toEqual(0);
+    // @ts-expect-error
+    expect(new RequestError("test", new Date(), mockOptions).status).toEqual(0);
   });
 
   test("sets .request", () => {
