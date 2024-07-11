@@ -37,11 +37,11 @@ export class RequestError extends Error {
 
     this.name = "HttpError";
 
-    // Implicit coercion to number if statusCode is a string
+    // Coerce the statusCode to an integer especially if it is a string
     this.status = Number.parseInt(statusCode as unknown as string);
 
-    // If status is not equal to itself, then it is NaN
-    // we set then the status to 0
+    // If status code is NaN, then set status to 0 to signal e.g. a network
+    // error or a AbortError
     if (Number.isNaN(this.status)) {
       this.status = 0;
     }
