@@ -29,12 +29,6 @@ export class RequestError extends Error {
   ) {
     super(message);
 
-    // Maintains proper stack trace (only available on V8)
-    /* istanbul ignore next */
-    if (Error.captureStackTrace) {
-      Error.captureStackTrace(this, this.constructor);
-    }
-
     this.name = "HttpError";
 
     // Implicit coercion to number if statusCode is a string
