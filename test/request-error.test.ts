@@ -1,3 +1,4 @@
+import { describe, test, expect } from "vitest";
 import { RequestError } from "../src/index.js";
 import type { RequestErrorOptions } from "../src/types.js";
 
