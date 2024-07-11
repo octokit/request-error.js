@@ -1,4 +1,4 @@
-# http-error.js
+# request-error.js
 
 > Error class for Octokit request errors
 
