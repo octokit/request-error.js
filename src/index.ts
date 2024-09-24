@@ -20,7 +20,7 @@ export class RequestError extends Error {
   /**
    * Response object if a response was received
    */
-  response?: OctokitResponse<unknown>;
+  response?: OctokitResponse<unknown> | undefined;
 
   constructor(
     message: string,
