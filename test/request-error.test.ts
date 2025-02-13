@@ -17,6 +17,40 @@ const mockOptions: RequestErrorOptions = {
 };
 
 describe("RequestError", () => {
+  test("Test ReDoS - attack string", () => {
+    const startTime = performance.now();
+    const error = new RequestError("Oops", 500, {
+      request: {
+        method: "POST",
+        url: "https://api.github.com/foo",
+        body: {
+          bar: "baz",
+        },
+        headers: {
+          authorization: ""+" ".repeat(100000)+"\n@",
+        },
+      },
+      response: {
+        status: 500,
+        url: "https://api.github.com/foo",
+        headers: {
+          "x-github-request-id": "1:2:3:4",
+        },
+        data: {
+          foo: "bar",
+        },
+      },
+    });
+    const endTime = performance.now();
+    const elapsedTime = endTime - startTime;
+    const reDosThreshold = 2000; 
+
+    expect(elapsedTime).toBeLessThanOrEqual(reDosThreshold);
+    if (elapsedTime > reDosThreshold) {
+      console.warn(`🚨 Potential ReDoS Attack! getDuration method took ${elapsedTime.toFixed(2)} ms, exceeding threshold of ${reDosThreshold} ms.`);
+    }
+  });
+
   test("inherits from Error", () => {
     const error = new RequestError("test", 123, mockOptions);
     expect(error).toBeInstanceOf(Error);
