@@ -20,7 +20,7 @@ describe("RequestError", () => {
           bar: "baz",
         },
         headers: {
-          authorization: ""+" ".repeat(100000)+"\n@",
+          authorization: "" + " ".repeat(100000) + "\n@",
         },
       },
       response: {
@@ -36,14 +36,16 @@ describe("RequestError", () => {
     });
     const endTime = performance.now();
     const elapsedTime = endTime - startTime;
-    const reDosThreshold = 2000; 
-
+    const reDosThreshold = 2000;
     expect(elapsedTime).toBeLessThanOrEqual(reDosThreshold);
     if (elapsedTime > reDosThreshold) {
-      console.warn(`🚨 Potential ReDoS Attack! getDuration method took ${elapsedTime.toFixed(2)} ms, exceeding threshold of ${reDosThreshold} ms.`);
+      console.warn(
+        `🚨 Potential ReDoS Attack! getDuration method took ${elapsedTime.toFixed(
+          2,
+        )} ms, exceeding threshold of ${reDosThreshold} ms.`,
+      );
     }
   });
-
   test("inherits from Error", () => {
     const error = new RequestError("test", 123, mockOptions);
     expect(error).toBeInstanceOf(Error);
