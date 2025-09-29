@@ -33,7 +33,7 @@
     "esbuild": "^0.25.0",
     "glob": "^11.0.0",
     "prettier": "3.6.2",
-    "tinybench": "^4.0.0",
+    "tinybench": "^5.0.0",
     "typescript": "^5.0.0",
     "vitest": "^3.0.0"
   },
