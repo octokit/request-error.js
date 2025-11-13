@@ -27,7 +27,7 @@ export class RequestError extends Error {
     statusCode: number,
     options: RequestErrorOptions,
   ) {
-    super(message);
+    super(message, { cause: options.cause });
 
     this.name = "HttpError";
 
