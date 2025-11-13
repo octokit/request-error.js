@@ -40,6 +40,7 @@ export class RequestError extends Error {
       this.status = 0;
     }
 
+    /* v8 ignore else -- @preserve -- Bug with vitest coverage where it sees an else branch that doesn't exist */
     if ("response" in options) {
       this.response = options.response;
     }
