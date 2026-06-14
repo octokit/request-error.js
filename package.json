@@ -34,7 +34,7 @@
     "prettier": "3.7.4",
     "tinybench": "^5.0.0",
     "tinyglobby": "^0.2.15",
-    "typescript": "^5.0.0",
+    "typescript": "^6.0.0",
     "vitest": "^4.0.0"
   },
   "release": {
