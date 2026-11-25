@@ -29,13 +29,13 @@
   "devDependencies": {
     "@octokit/tsconfig": "^4.0.0",
     "@types/node": "^24.0.0",
-    "@vitest/coverage-v8": "^4.0.0",
+    "@vitest/coverage-v8": "^5.0.0",
     "esbuild": "^0.28.0",
     "prettier": "3.9.6",
     "tinybench": "^5.0.0",
     "tinyglobby": "^0.2.15",
     "typescript": "^7.0.0",
-    "vitest": "^4.0.0"
+    "vitest": "^5.0.0"
   },
   "release": {
     "branches": [
